@@ -34,6 +34,12 @@ function resetThreat() {
     }
 }
 
+function isSafe(color, row, col) {
+    let piece = getPiece(row, col);
+
+    return inBounds(row, col) && !isThreatened(color, row, col) && (!piece || piece.color == swap(color));
+}
+
 function checkForCheck(color) {
     let king = pieces.find(p => p.type === "k" && p.color === color);
     let checkmate = true;
@@ -42,14 +48,14 @@ function checkForCheck(color) {
         $("#check").text(`${name(color)}'s king is in check.`);
 
         // Check if king has any legal moves
-        // (there's probably a better way to do this)
+        // (there's still probably a better way to do this)
         for (let i = -1; i <= 1; i++) {
-            checkmate = checkmate && !clearPath(color, king.row - 1, king.col + i);
-            checkmate = checkmate && !clearPath(color, king.row + 1, king.col + i);
+            checkmate = checkmate && !isSafe(color, king.row - 1, king.col + i);
+            checkmate = checkmate && !isSafe(color, king.row + 1, king.col + i);
         }
         
-        checkmate = checkmate && !clearPath(color, king.row, king.col - 1);
-        checkmate = checkmate && !clearPath(color, king.row, king.col + 1);
+        checkmate = checkmate && !isSafe(color, king.row, king.col - 1);
+        checkmate = checkmate && !isSafe(color, king.row, king.col + 1);
 
         if(checkmate) {
             gameover = true;
