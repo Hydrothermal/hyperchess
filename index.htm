@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hyperchess</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/piece.js"></script>
+</head>
+<body>
+    <div id="board"></div>
+    <div id="status">
+        <span class="range-label">Square size:</span>
+        <input id="scale" type="range" value="50" min="20" max="128"> <span>50</span>px<br><br>
+        
+        <div id="turn-wrapper">It is <span id="turn"></span>'s turn.</div>
+        <span id="check"></span>
+
+        <div id="pregame">
+            <span class="range-label">Board height:</span>
+            <input id="height" type="range" value="8" min="4" max="128" step="2"> <span>8</span> squares<br><br>
+
+            <input type="button" id="begin" value="Begin game">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+:root {
+    --scale: 50px;
+}
+
+#board {
+    background-color: #00d;
+    display: inline-block;
+    width: calc(var(--scale) * 8);
+}
+
+#status {
+    position: fixed;
+    left: calc(var(--scale) * 8 + 14px);
+    display: inline-block;
+    vertical-align: top;
+    font: 14px "Trebuchet MS";
+}
+
+.range-label {
+    display: inline-block;
+    width: 90px;
+}
+
+input[type=range] {
+    position: relative;
+    top: 6px;
+    width: 180px;
+}
+
+#turn-wrapper {
+    display: none;
+}
+
+#check {
+    font-weight: bold;
+}
+
+.square {
+    border: 2px solid transparent;
+    width: var(--scale);
+    height: var(--scale);
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.square.highlight {
+    border: 2px solid #66f;
+    cursor: pointer;
+    opacity: 0.95;
+}
+
+.square.highlight.castling {
+    border: 2px solid #fa3;
+}
+
+.square.highlight.capture {
+    border: 2px solid #f33;
+}
+
+.square.highlight:hover {
+    opacity: 0.75;
+}
+
+.piece {
+    position: relative;
+    top: -2px;
+    left: -2px;
+    width: var(--scale);
+    height: var(--scale);
+}
+
+.piece.active {
+    cursor: pointer;
+}
+
+.piece.active:hover {
+    background-color: rgba(100, 100, 255, 0.25);
+}
